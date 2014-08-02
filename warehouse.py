@@ -10,9 +10,4 @@ class WareHouse(QObject):
 
     @pyqtSlot(result=QVariant)
     def all_cargo(self):
-        l = list()
-        for cargo in Cargo.select():
-            print cargo.name
-            l.append(cargo.javascriptify())
-            print cargo.javascriptify()
-        return QVariant(l)
+        return QVariant(map(lambda x: x.javascriptify(), Cargo.select()))

@@ -12,18 +12,25 @@ from warehouse import WareHouse
 class Window(QWidget):
     def __init__(self):
         super(Window, self).__init__()
+
+        self.setGeometry(300, 300, 1024, 800)
+        self.setWindowTitle('WAREHOUSE')
+
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
 
-        web_view = QWebView(self)
-        layout.addWidget(web_view)
-
-        self.warehouse = WareHouse()
-        web_view.page().mainFrame().addToJavaScriptWindowObject("warehouseObject", self.warehouse)
+        self. web_view = QWebView(self)
+        layout.addWidget(self.web_view)
 
         pyDir = os.path.abspath(os.path.dirname(__file__))
         htmlUrl = QUrl.fromLocalFile(os.path.join(pyDir, "static/index.html"))
-        web_view.setUrl(htmlUrl)
+        self.web_view.setUrl(htmlUrl)
+
+        self.web_view.urlChanged.connect(self.urlChanged)
+
+    def urlChanged(self):
+        self.warehouse = WareHouse()
+        self.web_view.page().mainFrame().addToJavaScriptWindowObject("warehouseObject", self.warehouse)
 
 def main():
     app = QApplication(sys.argv)
@@ -33,3 +40,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
