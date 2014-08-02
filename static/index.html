@@ -66,10 +66,9 @@
 <script src="bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
-        alert(warehouseObject.compute(2));
-        alert(warehouseObject.some_string());
-        for (i in warehouseObject.some_list()) {
-            alert(warehouseObject.some_list()[i]);
+        var cargo_list = warehouseObject.all_cargo();
+        for (i in cargo_list) {
+            alert(cargo_list[i].name);
         }
     });
 </script>
