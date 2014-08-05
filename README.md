@@ -15,6 +15,7 @@ Then I found use QWebkit is quite a good solution. Also QWebkit bridge can easil
 
 I chose a lightweight ORM framework peewee, chose sqlite as the database.
 
-If add a template system to this project, it's completely MVC.
+<del>If add a template system to this project, it's completely MVC.</del>
+I added angular instead of template system. So all work can be done in one single HTML file. `$scope.qObject = qObject` can easily map QObject to angular controller. (unfortunately `$scope = qObject` doesn't work.
 
 I just wanna try if this is a solution to develop desktop app in a web way. But I don't wanna continue this project any more. So put it here.
